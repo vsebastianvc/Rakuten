@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.vsebastianvc.rakuten.itemdetails.viewmodel.ItemDetailsViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_photo_detail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@{viewModel.photoTitleLiveData}"
+                app:imageFromUrl="@{viewModel.photoImageURLLiveData}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_id"
+                app:layout_constraintDimensionRatio="H,16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_id"
+                style="@style/TextViewDetailScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.photoIdDataLiveData}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_owner"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_photo_detail" />
+
+            <TextView
+                android:id="@+id/tv_owner"
+                style="@style/TextViewDetailScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.photoOwnerLiveData}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_secret"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_id" />
+
+            <TextView
+                android:id="@+id/tv_secret"
+                style="@style/TextViewDetailScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.photoSecretLiveData}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_server"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_owner" />
+
+            <TextView
+                android:id="@+id/tv_server"
+                style="@style/TextViewDetailScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.photoServerLiveData}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_farm"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_secret" />
+
+            <TextView
+                android:id="@+id/tv_farm"
+                style="@style/TextViewDetailScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{Integer.toString(viewModel.photoFarmLiveData)}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_title_detail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_server" />
+
+            <TextView
+                android:id="@+id/tv_title_detail"
+                style="@style/TextViewDetailScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.photoTitleLiveData}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_is_public"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_farm" />
+
+            <TextView
+                android:id="@+id/tv_is_public"
+                style="@style/TextViewDetailScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{Integer.toString(viewModel.photoIsPublicLiveData)}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_is_friend"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_detail" />
+
+            <TextView
+                android:id="@+id/tv_is_friend"
+                style="@style/TextViewDetailScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{Integer.toString(viewModel.photoIsFriendLiveData)}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_is_family"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_is_public" />
+
+            <TextView
+                android:id="@+id/tv_is_family"
+                style="@style/TextViewDetailScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{Integer.toString(viewModel.photoIsFamilyLiveData)}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_is_friend" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
