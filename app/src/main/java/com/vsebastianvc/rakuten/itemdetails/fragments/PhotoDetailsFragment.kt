@@ -28,7 +28,7 @@ class PhotoDetailsFragment : Fragment(), KoinComponent {
     private val itemDetailsViewModel: ItemDetailsViewModel by viewModel{parametersOf(arguments.photo)}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate<FragmentPhotoDetailsBinding>(
                 inflater, R.layout.fragment_photo_details, container, false
         ).apply {

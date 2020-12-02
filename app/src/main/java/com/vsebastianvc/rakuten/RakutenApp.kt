@@ -1,6 +1,7 @@
 package com.vsebastianvc.rakuten
 
 import android.app.Application
+import com.vsebastianvc.rakuten.di.networkModule
 import com.vsebastianvc.rakuten.itemdetails.di.itemDetailsModule
 import com.vsebastianvc.rakuten.itemlist.di.itemListModule
 import org.koin.android.ext.koin.androidContext
@@ -15,7 +16,7 @@ class RakutenApp : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@RakutenApp)
-            modules(listOf(itemListModule, itemDetailsModule))
+            modules(listOf(itemListModule, itemDetailsModule, networkModule))
         }
     }
 }

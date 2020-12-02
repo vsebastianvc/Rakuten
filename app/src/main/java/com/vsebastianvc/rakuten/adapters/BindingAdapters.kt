@@ -10,7 +10,7 @@ import com.vsebastianvc.rakuten.utils.PhotoUtils.Companion.loadImageWithGlide
  */
 @BindingAdapter("imageFromUrl")
 fun bindImageFromUrl(imageView: ImageView, imageUrl: String) {
-    if (!imageUrl.isNotBlank()) {
+    if (imageUrl.isNotBlank()) {
         loadImageWithGlide(imageView, imageUrl)
     } else {
         loadImageWithGlide(imageView, imageUrl, R.drawable.shape_gradient_top_background)

@@ -15,7 +15,7 @@ import com.vsebastianvc.rakuten.utils.PhotoUtils.Companion.loadImageWithGlide
 /**
  * Created by Sebastian on 11/29/2020.
  */
-class CustomPhotosAdapter(context: Context?, private var listPhoto: List<Photo>) : BaseAdapter() {
+class CustomPhotosAdapter(context: Context, private var listPhoto: List<Photo>) : BaseAdapter() {
     private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
     override fun getCount(): Int {
         return listPhoto.size
@@ -30,21 +30,20 @@ class CustomPhotosAdapter(context: Context?, private var listPhoto: List<Photo>)
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var convertView = convertView
+        var view = convertView
         val holder: ViewHolder
-        if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.item_photo, null)
+        if (view == null) {
+            view = layoutInflater.inflate(R.layout.item_photo, parent, false)
             holder = ViewHolder()
-            holder.photo = convertView.findViewById<View>(R.id.iv_photo) as ImageView
-            holder.photoTitle = convertView.findViewById<View>(R.id.tv_photo_title) as TextView
-            convertView.tag = holder
+            holder.photo = view.findViewById<View>(R.id.iv_photo) as ImageView
+            holder.photoTitle = view.findViewById<View>(R.id.tv_photo_title) as TextView
+            view.tag = holder
         } else {
-            holder = convertView.tag as ViewHolder
+            holder = view.tag as ViewHolder
         }
-        //Glide.with(holder.photo.context).load(constructPhotoURL(listPhoto[position])).centerCrop().into(holder.photo)
-        loadImageWithGlide(holder.photo, constructPhotoURL(listPhoto[position]))
-        holder.photoTitle.text = listPhoto[position].title
-        return convertView!!
+        loadImageWithGlide(holder.photo, constructPhotoURL(getItem(position)))
+        holder.photoTitle.text = getItem(position).title
+        return view!!
     }
 
     fun refreshData(listPhoto: List<Photo>) {

@@ -63,5 +63,4 @@ class ItemDetailsViewModel(photo: Photo) : ViewModel() {
         _photoIsFriend.value = photo.isFriend
         _photoIsFamily.value = photo.isFamily
     }
-
 }
